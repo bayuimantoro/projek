@@ -7,6 +7,8 @@ package kelompok6.tabadmin;
 import java.util.List;
 import java.util.Map;
 import javax.swing.text.AbstractDocument.Content;
+import kelompok6.tabadmin.CetakUser;
+
 
 /**
  *
@@ -90,9 +92,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         administrasi.add(listUser);
 
         laporanUser.setText("Laporan User");
-        laporanUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                laporanUserMouseClicked(evt);
+        laporanUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                laporanUserActionPerformed(evt);
             }
         });
         administrasi.add(laporanUser);
@@ -142,13 +144,13 @@ public class MenuAdmin extends javax.swing.JFrame {
         Home();
     }//GEN-LAST:event_homeMouseClicked
 
-    private void laporanUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanUserMouseClicked
+    private void laporanUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laporanUserActionPerformed
         // TODO add your handling code here:
         CetakUser reportGenerator = new CetakUser();
         List<Map<String, ?>> data = reportGenerator.fetchData();
         String outputFilePath = "CetakLaporanUser.pdf";
         reportGenerator.generateReport(data, outputFilePath);
-    }//GEN-LAST:event_laporanUserMouseClicked
+    }//GEN-LAST:event_laporanUserActionPerformed
 
     private void editUserMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editUserMouseClicked
         // TODO add your handling code here:

@@ -34,11 +34,6 @@ public class CetakUser {
             for (String field : fields) {
                 JRDesignField jrField = new JRDesignField();
                 jrField.setName(field);
-                if (field.equals("alamat")) {
-                    jrField.setValueClass(Long.class);
-                } else {
-                    jrField.setValueClass(String.class);
-                }
                 jasperDesign.addField(jrField);
             }
 
