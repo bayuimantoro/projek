@@ -3,21 +3,20 @@ package kelompok6.repo;
 import kelompok6.model.PaketModel;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.sql.*;
 
 import kelompok6.lib.koneksii;
 
 public class PaketRepo {
-    private static final String TABLE_NAME = "Paket";
+    private static final String TABLE_NAME = "paketdata";
 
     public boolean create(PaketModel paket) {
-        String query = "INSERT INTO " + TABLE_NAME + " (id, paket, usernameUtama) VALUES (?, ?, ?)";
+        String query = "INSERT INTO " + TABLE_NAME + " (id, paket, username) VALUES (?, ?, ?)";
         try (Connection connection = koneksii.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, paket.getId());
             stmt.setString(2, paket.getPaket());
-            stmt.setString(3, paket.getUsernameUtama());
+            stmt.setString(3, paket.getUsername());
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -35,7 +34,7 @@ public class PaketRepo {
                 PaketModel paket = new PaketModel(
                         rs.getString("id"),
                         rs.getString("paket"),
-                        rs.getString("usernameUtama"));
+                        rs.getString("username"));
                 pakets.add(paket);
             }
         } catch (SQLException e) {
@@ -45,11 +44,11 @@ public class PaketRepo {
     }
 
     public boolean update(PaketModel paket) {
-        String query = "UPDATE " + TABLE_NAME + " SET paket = ?, usernameUtama = ? WHERE id = ?";
+        String query = "UPDATE " + TABLE_NAME + " SET paket = ?, username = ? WHERE id = ?";
         try (Connection connection = koneksii.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, paket.getPaket());
-            stmt.setString(2, paket.getUsernameUtama());
+            stmt.setString(2, paket.getUsername());
             stmt.setString(3, paket.getId());
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -70,18 +69,18 @@ public class PaketRepo {
         }
     }
 
-    public List<PaketModel> findByUsernameUtama(String usernameUtama) {
+    public List<PaketModel> findByUsername(String username) {
         List<PaketModel> pakets = new ArrayList<>();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE usernameUtama = ?";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE username = ?";
         try (Connection connection = koneksii.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, usernameUtama);
+            stmt.setString(1, username);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     PaketModel paket = new PaketModel(
                             rs.getString("id"),
                             rs.getString("paket"),
-                            rs.getString("usernameUtama"));
+                            rs.getString("username"));
                     pakets.add(paket);
                 }
             }

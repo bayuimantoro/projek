@@ -3,13 +3,13 @@ package kelompok6.model;
 public class PaketModel {
     private String id;
     private String paket;
-    private String usernameUtama;
+    private String username;
 
     // Constructor
-    public PaketModel(String id, String paket, String usernameUtama) {
+    public PaketModel(String id, String paket, String username) {
         this.id = id;
         this.paket = paket;
-        this.usernameUtama = usernameUtama;
+        this.username = username;
     }
 
     // Getters and Setters
@@ -29,11 +29,11 @@ public class PaketModel {
         this.paket = paket;
     }
 
-    public String getUsernameUtama() {
-        return usernameUtama;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsernameUtama(String usernameUtama) {
-        this.usernameUtama = usernameUtama;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
