@@ -105,6 +105,11 @@ public class MenuAdmin extends javax.swing.JFrame {
                 editUserMouseClicked(evt);
             }
         });
+        editUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editUserActionPerformed(evt);
+            }
+        });
         administrasi.add(editUser);
 
         hapusUser.setText("Hapus User");
@@ -151,6 +156,15 @@ public class MenuAdmin extends javax.swing.JFrame {
         String outputFilePath = "CetakLaporanUser.pdf";
         reportGenerator.generateReport(data, outputFilePath);
     }//GEN-LAST:event_laporanUserActionPerformed
+
+    private void editUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserActionPerformed
+        // TODO add your handling code here:
+        EditUser edituUser = new EditUser();
+        Content.removeAll();
+        Content.add(edituUser.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_editUserActionPerformed
 
     private void editUserMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editUserMouseClicked
         // TODO add your handling code here:
