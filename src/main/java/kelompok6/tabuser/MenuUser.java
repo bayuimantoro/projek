@@ -6,7 +6,7 @@ package kelompok6.tabuser;
 
 import kelompok6.model.UserModel;
 import kelompok6.tabadmin.Home;
-import kelompok6.tabuser.PaketData;
+import kelompok6.tabuser.PaketDataKorup;
 
 /**
  *
@@ -69,9 +69,9 @@ public class MenuUser extends javax.swing.JFrame {
         menu_user.add(home);
 
         pesan.setText("Pesan");
-        pesan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesanActionPerformed(evt);
+        pesan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pesanMouseClicked(evt);
             }
         });
         menu_user.add(pesan);
@@ -101,14 +101,14 @@ public class MenuUser extends javax.swing.JFrame {
         Content.repaint();
     }//GEN-LAST:event_homeMouseClicked
 
-    private void pesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesanActionPerformed
+    private void pesanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pesanMouseClicked
         // TODO add your handling code here:
-        PaketData PaketData = new PaketData(session);
+        PaketData paketData = new PaketData(session);
         Content.removeAll();
-        Content.add(PaketData.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.add(paketData.getContentPane(), java.awt.BorderLayout.CENTER);
         Content.revalidate();
         Content.repaint();
-    }//GEN-LAST:event_pesanActionPerformed
+    }//GEN-LAST:event_pesanMouseClicked
 
     /**
      * @param args the command line arguments

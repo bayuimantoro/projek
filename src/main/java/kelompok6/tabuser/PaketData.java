@@ -1,8 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package kelompok6.tabadmin;
+package kelompok6.tabuser;
+
+import kelompok6.model.PaketModel;
+import kelompok6.model.UserModel;
+import kelompok6.repo.PaketRepo;
+import java.util.UUID;
 
 /**
  *
@@ -13,8 +14,13 @@ public class PaketData extends javax.swing.JFrame {
     /**
      * Creates new form PaketData
      */
-    public PaketData() {
+    private static UserModel pesan;
+    private PaketRepo paketDataRepo;
+
+    public PaketData(UserModel session) {
         initComponents();
+        pesan = session;
+        this.paketDataRepo = new PaketRepo();
     }
 
     /**
@@ -26,20 +32,25 @@ public class PaketData extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        title = new javax.swing.JLabel();
+        paket = new javax.swing.JLabel();
+        level = new javax.swing.JComboBox<>();
+        beli = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Pilih Paket");
+        title.setText("Pilih Paket");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih :", "20 Mbps Rp 239.000/bulan", "35 Mbps Rp 299.000/bulan", "50 Mbps Rp 349.000/bulan", "100 Mbps Rp 439.000/bulan" }));
+        paket.setText("Paket Internet");
 
-        jLabel2.setText("Paket Internet");
+        level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih :", "20 Mbps Rp 239.000/bulan", "35 Mbps Rp 299.000/bulan", "50 Mbps Rp 349.000/bulan", "100 Mbps Rp 439.000/bulan" }));
 
-        jButton1.setText("Beli");
+        beli.setText("Beli");
+        beli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                beliActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,30 +58,53 @@ public class PaketData extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(249, 249, 249)
-                .addComponent(jLabel2)
+                .addComponent(paket)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(beli)
+                    .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(title))
                 .addContainerGap(278, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(126, 126, 126)
-                .addComponent(jLabel1)
+                .addComponent(title)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paket))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(beli)
                 .addContainerGap(377, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void beliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beliActionPerformed
+        // TODO add your handling code here:
+        String selectedPaket = (String) level.getSelectedItem();
+        if (selectedPaket != null && !selectedPaket.equals("Pilih :")) {
+            PaketModel paket = new PaketModel(generateUniqueId(), selectedPaket, pesan.getUsername());
+            boolean success = paketDataRepo.create(paket);
+            if (success) {
+                // Show success message
+                javax.swing.JOptionPane.showMessageDialog(this, "Paket berhasil dibeli!");
+            } else {
+                // Show error message
+                javax.swing.JOptionPane.showMessageDialog(this, "Gagal membeli paket.");
+            }
+        } else {
+            // Show warning message
+            javax.swing.JOptionPane.showMessageDialog(this, "Silakan pilih paket terlebih dahulu.");
+        }
+    }//GEN-LAST:event_beliActionPerformed
+
+    private String generateUniqueId() {
+        return UUID.randomUUID().toString();
+    }
 
     /**
      * @param args the command line arguments
@@ -102,15 +136,15 @@ public class PaketData extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PaketData().setVisible(true);
+                new PaketData(pesan).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton beli;
+    private javax.swing.JComboBox<String> level;
+    private javax.swing.JLabel paket;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
