@@ -69,9 +69,9 @@ public class MenuUser extends javax.swing.JFrame {
         menu_user.add(home);
 
         pesan.setText("Pesan");
-        pesan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pesanMouseClicked(evt);
+        pesan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesanActionPerformed(evt);
             }
         });
         menu_user.add(pesan);
@@ -92,15 +92,6 @@ public class MenuUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pesanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pesanMouseClicked
-        // TODO add your handling code here:
-        PaketData PaketData = new PaketData();
-        Content.removeAll();
-        Content.add(PaketData.getContentPane(), java.awt.BorderLayout.CENTER);
-        Content.revalidate();
-        Content.repaint();
-    }//GEN-LAST:event_pesanMouseClicked
-
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
         HomeUser homeUser = new HomeUser();
@@ -109,6 +100,15 @@ public class MenuUser extends javax.swing.JFrame {
         Content.revalidate();
         Content.repaint();
     }//GEN-LAST:event_homeMouseClicked
+
+    private void pesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesanActionPerformed
+        // TODO add your handling code here:
+        PaketData PaketData = new PaketData(session);
+        Content.removeAll();
+        Content.add(PaketData.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_pesanActionPerformed
 
     /**
      * @param args the command line arguments
