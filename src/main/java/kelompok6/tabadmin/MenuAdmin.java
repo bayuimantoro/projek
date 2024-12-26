@@ -5,19 +5,20 @@
 package kelompok6.tabadmin;
 
 import java.util.List;
+import java.util.Map;
 import javax.swing.text.AbstractDocument.Content;
 
 /**
  *
  * @author bayui
  */
-public class menu_admin extends javax.swing.JFrame {
+public class MenuAdmin extends javax.swing.JFrame {
     // private javax.swing.JPanel Content; // Removed duplicate declaration
 
     /**
      * Creates new form menu_admin
      */
-    public menu_admin() {
+    public MenuAdmin() {
         initComponents();
         Home();
     }
@@ -48,7 +49,7 @@ public class menu_admin extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         Content = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        tagihan = new javax.swing.JMenu();
+        home = new javax.swing.JMenu();
         administrasi = new javax.swing.JMenu();
         listUser = new javax.swing.JMenuItem();
         laporanUser = new javax.swing.JMenuItem();
@@ -70,13 +71,13 @@ public class menu_admin extends javax.swing.JFrame {
             .addGap(0, 634, Short.MAX_VALUE)
         );
 
-        tagihan.setText("Tagihan");
-        tagihan.addMouseListener(new java.awt.event.MouseAdapter() {
+        home.setText("Home");
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tagihanMouseClicked(evt);
+                homeMouseClicked(evt);
             }
         });
-        jMenuBar1.add(tagihan);
+        jMenuBar1.add(home);
 
         administrasi.setText("Administrasi");
 
@@ -89,6 +90,11 @@ public class menu_admin extends javax.swing.JFrame {
         administrasi.add(listUser);
 
         laporanUser.setText("Laporan User");
+        laporanUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                laporanUserMouseClicked(evt);
+            }
+        });
         administrasi.add(laporanUser);
 
         editUser.setText("Edit User");
@@ -124,17 +130,25 @@ public class menu_admin extends javax.swing.JFrame {
 
     private void listUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listUserActionPerformed
         // TODO add your handling code here:
-        list_user listuser = new list_user();
+        ListUser listuser = new ListUser();
         Content.removeAll();
         Content.add(listuser.getContentPane(), java.awt.BorderLayout.CENTER);
         Content.revalidate();
         Content.repaint();
     }//GEN-LAST:event_listUserActionPerformed
 
-    private void tagihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tagihanMouseClicked
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
         Home();
-    }//GEN-LAST:event_tagihanMouseClicked
+    }//GEN-LAST:event_homeMouseClicked
+
+    private void laporanUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanUserMouseClicked
+        // TODO add your handling code here:
+        CetakUser reportGenerator = new CetakUser();
+        List<Map<String, ?>> data = reportGenerator.fetchData();
+        String outputFilePath = "CetakLaporanUser.pdf";
+        reportGenerator.generateReport(data, outputFilePath);
+    }//GEN-LAST:event_laporanUserMouseClicked
 
     private void editUserMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editUserMouseClicked
         // TODO add your handling code here:
@@ -163,27 +177,28 @@ public class menu_admin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menu_admin.class
+            java.util.logging.Logger.getLogger(MenuAdmin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menu_admin.class
+            java.util.logging.Logger.getLogger(MenuAdmin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menu_admin.class
+            java.util.logging.Logger.getLogger(MenuAdmin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menu_admin.class
+            java.util.logging.Logger.getLogger(MenuAdmin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        // </editor-fold>
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu_admin().setVisible(true);
+                new MenuAdmin().setVisible(true);
             }
         });
     }
@@ -193,10 +208,10 @@ public class menu_admin extends javax.swing.JFrame {
     private javax.swing.JMenu administrasi;
     private javax.swing.JMenuItem editUser;
     private javax.swing.JMenuItem hapusUser;
+    private javax.swing.JMenu home;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem laporanUser;
     private javax.swing.JMenuItem listUser;
-    private javax.swing.JMenu tagihan;
     // End of variables declaration//GEN-END:variables
 }

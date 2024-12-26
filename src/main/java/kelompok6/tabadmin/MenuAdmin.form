@@ -9,12 +9,12 @@
     </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="tagihan">
+        <Menu class="javax.swing.JMenu" name="home">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tagihan"/>
+            <Property name="text" type="java.lang.String" value="Home"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tagihanMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="homeMouseClicked"/>
           </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="administrasi">
@@ -34,6 +34,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Laporan User"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="laporanUserMouseClicked"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editUser">
               <Properties>

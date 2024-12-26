@@ -4,7 +4,7 @@
 
 package kelompok6.projek;
 
-import kelompok6.form.menu;
+import kelompok6.form.Menu;
 
 
 /**
@@ -14,7 +14,7 @@ import kelompok6.form.menu;
 public class Projek {
 
     public static void main(String[] args) {
-        menu utama = new menu();
+        Menu utama = new Menu();
         utama.setVisible(true);
     }
 }

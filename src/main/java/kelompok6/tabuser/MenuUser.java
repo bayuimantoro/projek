@@ -5,24 +5,34 @@
 package kelompok6.tabuser;
 
 import kelompok6.model.UserModel;
+import kelompok6.tabadmin.Home;
+import kelompok6.tabuser.PaketData;
 
 /**
  *
  * @author bayui
  */
-public class menu_user extends javax.swing.JFrame {
+public class MenuUser extends javax.swing.JFrame {
     private static UserModel session;
     /**
      * Creates new form menu_user
      */
-    public menu_user(UserModel user) {
+    public MenuUser(UserModel user) {
         initComponents();
         this.session = user;
+        Home();
     }
 
     public void load_data(){
     }
-
+    
+    public void Home() {
+        HomeUser home = new HomeUser();
+        Content.removeAll();
+        Content.add(home.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,95 +42,39 @@ public class menu_user extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        iduser = new javax.swing.JLabel();
-        nama = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
-        alamat = new javax.swing.JLabel();
-        Fid = new javax.swing.JLabel();
-        Fnama = new javax.swing.JLabel();
-        Fusername = new javax.swing.JLabel();
-        Femail = new javax.swing.JLabel();
-        Falamat = new javax.swing.JLabel();
+        Content = new javax.swing.JPanel();
         menu_user = new javax.swing.JMenuBar();
-        id = new javax.swing.JMenu();
-        tagihan = new javax.swing.JMenu();
+        home = new javax.swing.JMenu();
+        pesan = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        iduser.setText("ID");
-
-        nama.setText("Nama");
-
-        username.setText("Username");
-
-        email.setText("Email");
-
-        alamat.setText("Alamat");
-
-        Fid.setText("jLabel1");
-
-        Fnama.setText("jLabel2");
-
-        Fusername.setText("jLabel3");
-
-        Femail.setText("jLabel4");
-
-        Falamat.setText("jLabel5");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iduser)
-                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(alamat))
-                .addGap(203, 203, 203)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Femail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(Fusername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Fnama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Fid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Falamat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(232, Short.MAX_VALUE))
+        javax.swing.GroupLayout ContentLayout = new javax.swing.GroupLayout(Content);
+        Content.setLayout(ContentLayout);
+        ContentLayout.setHorizontalGroup(
+            ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(iduser)
-                    .addComponent(Fid))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nama)
-                    .addComponent(Fnama))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(username)
-                    .addComponent(Fusername))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(email)
-                    .addComponent(Femail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(alamat)
-                    .addComponent(Falamat))
-                .addContainerGap(303, Short.MAX_VALUE))
+        ContentLayout.setVerticalGroup(
+            ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 577, Short.MAX_VALUE)
         );
 
-        id.setText("ID");
-        menu_user.add(id);
+        home.setText("Home");
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
+        menu_user.add(home);
 
-        tagihan.setText("Tagihan");
-        menu_user.add(tagihan);
+        pesan.setText("Pesan");
+        pesan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pesanMouseClicked(evt);
+            }
+        });
+        menu_user.add(pesan);
 
         setJMenuBar(menu_user);
 
@@ -128,15 +82,33 @@ public class menu_user extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pesanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pesanMouseClicked
+        // TODO add your handling code here:
+        PaketData PaketData = new PaketData();
+        Content.removeAll();
+        Content.add(PaketData.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_pesanMouseClicked
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        // TODO add your handling code here:
+        HomeUser homeUser = new HomeUser();
+        Content.removeAll();
+        Content.add(homeUser.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_homeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,38 +127,29 @@ public class menu_user extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menu_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menu_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menu_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menu_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu_user(session).setVisible(true);
+                new MenuUser(session).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Falamat;
-    private javax.swing.JLabel Femail;
-    private javax.swing.JLabel Fid;
-    private javax.swing.JLabel Fnama;
-    private javax.swing.JLabel Fusername;
-    private javax.swing.JLabel alamat;
-    private javax.swing.JLabel email;
-    private javax.swing.JMenu id;
-    private javax.swing.JLabel iduser;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel Content;
+    private javax.swing.JMenu home;
     private javax.swing.JMenuBar menu_user;
-    private javax.swing.JLabel nama;
-    private javax.swing.JMenu tagihan;
-    private javax.swing.JLabel username;
+    private javax.swing.JMenu pesan;
     // End of variables declaration//GEN-END:variables
 }

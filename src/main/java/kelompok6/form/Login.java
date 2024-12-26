@@ -8,8 +8,8 @@ import kelompok6.model.AdminModel;
 import kelompok6.model.UserModel;
 import kelompok6.repo.AdminRepository;
 import kelompok6.repo.UserRepo;
-import kelompok6.tabadmin.menu_admin;
-import kelompok6.tabuser.menu_user;
+import kelompok6.tabadmin.MenuAdmin;
+import kelompok6.tabuser.MenuUser;
 
 /**
  *
@@ -17,11 +17,11 @@ import kelompok6.tabuser.menu_user;
  */
 public class Login extends javax.swing.JFrame {
 
-    private static menu Menu;
+    private static Menu Menu;
             /**
              * Creates new form login
              */
-            public Login(menu Menu) {
+            public Login(Menu Menu) {
                 initComponents();
                 this.Menu = Menu;
         }
@@ -36,7 +36,7 @@ public class Login extends javax.swing.JFrame {
                 if (adminLog != null) {
                     System.out.println("Login Berhasil");
                     Menu.setVisible(false);
-                    menu_admin menu_admin = new menu_admin();
+                    MenuAdmin menu_admin = new MenuAdmin();
                     menu_admin.setVisible(true);
                 } else {
                     System.out.println("Login Gagal");
@@ -63,8 +63,8 @@ public class Login extends javax.swing.JFrame {
             if (user != null) {
                 System.out.println("Login Berhasil");
                 Menu.setVisible(false);
-                // Assuming you have a user menu similar to admin menu
-                menu_user menuUser = new menu_user(user);
+                // Assuming you have a user Menu similar to admin Menu
+                MenuUser menuUser = new MenuUser(user);
                 menuUser.setVisible(true);
             } else {
                 System.out.println("Login Gagal");
