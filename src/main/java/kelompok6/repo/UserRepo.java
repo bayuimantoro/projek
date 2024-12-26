@@ -200,4 +200,18 @@ public class UserRepo {
             return false;
         }
     }
+    
+    public boolean deleteByUsername(String username) {
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE username = ?";
+        try (Connection connection = koneksii.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, username);
+            if (stmt.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

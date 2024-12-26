@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.text.AbstractDocument.Content;
 import kelompok6.tabadmin.CetakUser;
-
+import kelompok6.tabadmin.EditUser;
 
 /**
  *
@@ -113,6 +113,16 @@ public class MenuAdmin extends javax.swing.JFrame {
         administrasi.add(editUser);
 
         hapusUser.setText("Hapus User");
+        hapusUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hapusUserMouseClicked(evt);
+            }
+        });
+        hapusUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusUserActionPerformed(evt);
+            }
+        });
         administrasi.add(hapusUser);
 
         jMenuBar1.add(administrasi);
@@ -165,6 +175,19 @@ public class MenuAdmin extends javax.swing.JFrame {
         Content.revalidate();
         Content.repaint();
     }//GEN-LAST:event_editUserActionPerformed
+
+    private void hapusUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hapusUserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hapusUserMouseClicked
+
+    private void hapusUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusUserActionPerformed
+        // TODO add your handling code here:
+        HapusUser hapusUser = new HapusUser();
+        Content.removeAll();
+        Content.add(hapusUser.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_hapusUserActionPerformed
 
     private void editUserMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editUserMouseClicked
         // TODO add your handling code here:
