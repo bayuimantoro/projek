@@ -7,6 +7,8 @@ package kelompok6.tabadmin;
 import java.util.List;
 import java.util.Map;
 import javax.swing.text.AbstractDocument.Content;
+import kelompok6.form.Menu;
+import kelompok6.model.AdminModel;
 import kelompok6.tabadmin.CetakUser;
 import kelompok6.tabadmin.EditUser;
 
@@ -15,14 +17,15 @@ import kelompok6.tabadmin.EditUser;
  * @author bayui
  */
 public class MenuAdmin extends javax.swing.JFrame {
+    private static AdminModel session;
     // private javax.swing.JPanel Content; // Removed duplicate declaration
-
-    /**
-     * Creates new form menu_admin
-     */
-    public MenuAdmin() {
-        initComponents();
-        Home();
+        /**
+         * Creates new form menu_admin
+         */
+        public MenuAdmin(AdminModel admin) {
+            initComponents();
+            this.session = admin;
+            Home();
     }
 
     public void Home() {
@@ -57,6 +60,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         laporanUser = new javax.swing.JMenuItem();
         editUser = new javax.swing.JMenuItem();
         hapusUser = new javax.swing.JMenuItem();
+        Logout = new javax.swing.JMenu();
 
         jTextField1.setText("jTextField1");
 
@@ -122,6 +126,14 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(administrasi);
 
+        Logout.setText("Log out");
+        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(Logout);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,6 +192,15 @@ public class MenuAdmin extends javax.swing.JFrame {
         Content.repaint();
     }//GEN-LAST:event_hapusUserActionPerformed
 
+    private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
+        // TODO add your handling code here:
+        AdminModel session = null;
+        // Navigate to the Utama screen
+        setVisible(false);
+        Menu utama = new Menu();
+        utama.setVisible(true);
+    }//GEN-LAST:event_LogoutMouseClicked
+
     private void editUserMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editUserMouseClicked
         // TODO add your handling code here:
 
@@ -228,13 +249,14 @@ public class MenuAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuAdmin().setVisible(true);
+                new MenuAdmin(session).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Content;
+    private javax.swing.JMenu Logout;
     private javax.swing.JMenu administrasi;
     private javax.swing.JMenuItem editUser;
     private javax.swing.JMenuItem hapusUser;

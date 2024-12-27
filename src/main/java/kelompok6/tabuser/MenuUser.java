@@ -4,9 +4,9 @@
  */
 package kelompok6.tabuser;
 
+import kelompok6.form.Menu;
 import kelompok6.model.UserModel;
 import kelompok6.tabadmin.Home;
-import kelompok6.tabuser.PaketDataKorup;
 
 /**
  *
@@ -46,6 +46,7 @@ public class MenuUser extends javax.swing.JFrame {
         menu_user = new javax.swing.JMenuBar();
         home = new javax.swing.JMenu();
         pesan = new javax.swing.JMenu();
+        Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +76,14 @@ public class MenuUser extends javax.swing.JFrame {
             }
         });
         menu_user.add(pesan);
+
+        Logout.setText("Log Out");
+        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutMouseClicked(evt);
+            }
+        });
+        menu_user.add(Logout);
 
         setJMenuBar(menu_user);
 
@@ -109,6 +118,15 @@ public class MenuUser extends javax.swing.JFrame {
         Content.revalidate();
         Content.repaint();
     }//GEN-LAST:event_pesanMouseClicked
+
+    private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
+        // TODO add your handling code here:
+        UserModel session = null;
+        // Navigate to the Utama screen
+        setVisible(false);
+        Menu utama = new Menu();
+        utama.setVisible(true);
+    }//GEN-LAST:event_LogoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -148,6 +166,7 @@ public class MenuUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Content;
+    private javax.swing.JMenu Logout;
     private javax.swing.JMenu home;
     private javax.swing.JMenuBar menu_user;
     private javax.swing.JMenu pesan;

@@ -32,11 +32,11 @@ public class Login extends javax.swing.JFrame {
             String username = formUsername.getText();
             String password = formPassword.getText();
             if (adminRepository.login(username, password) != null) {
-                AdminModel adminLog = adminRepository.login(username, password);
-                if (adminLog != null) {
+                AdminModel admin = adminRepository.login(username, password);
+                if (admin != null) {
                     System.out.println("Login Berhasil");
                     Menu.setVisible(false);
-                    MenuAdmin menu_admin = new MenuAdmin();
+                    MenuAdmin menu_admin = new MenuAdmin(admin);
                     menu_admin.setVisible(true);
                 } else {
                     System.out.println("Login Gagal");
