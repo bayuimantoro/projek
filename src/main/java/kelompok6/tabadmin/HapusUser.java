@@ -112,9 +112,13 @@ public class HapusUser extends javax.swing.JFrame {
         int response = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus pengguna: " + usernameToDelete + "?", "Konfirmasi", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
         if (response == javax.swing.JOptionPane.YES_OPTION) {
             kelompok6.repo.UserRepo userRepo = new kelompok6.repo.UserRepo();
-            userRepo.deleteByUsername(usernameToDelete);
-            javax.swing.JOptionPane.showMessageDialog(this, "Pengguna berhasil dihapus.", "Sukses", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            loadData();
+            boolean isDeleted = userRepo.deleteByUsername(usernameToDelete);
+            if (isDeleted) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Pengguna berhasil dihapus.", "Sukses", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                loadData();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Pengguna tidak ditemukan.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_hapusMouseClicked
 

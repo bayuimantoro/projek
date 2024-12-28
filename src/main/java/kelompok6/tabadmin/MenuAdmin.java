@@ -60,6 +60,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         laporanUser = new javax.swing.JMenuItem();
         editUser = new javax.swing.JMenuItem();
         hapusUser = new javax.swing.JMenuItem();
+        tagihan = new javax.swing.JMenuItem();
         Logout = new javax.swing.JMenu();
 
         jTextField1.setText("jTextField1");
@@ -123,6 +124,14 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
         administrasi.add(hapusUser);
+
+        tagihan.setText("Tagihan");
+        tagihan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tagihanActionPerformed(evt);
+            }
+        });
+        administrasi.add(tagihan);
 
         jMenuBar1.add(administrasi);
 
@@ -201,6 +210,15 @@ public class MenuAdmin extends javax.swing.JFrame {
         utama.setVisible(true);
     }//GEN-LAST:event_LogoutMouseClicked
 
+    private void tagihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tagihanActionPerformed
+        // TODO add your handling code here:
+        Paket tagihan = new Paket();
+        Content.removeAll();
+        Content.add(tagihan.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_tagihanActionPerformed
+
     private void editUserMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editUserMouseClicked
         // TODO add your handling code here:
 
@@ -265,5 +283,6 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem laporanUser;
     private javax.swing.JMenuItem listUser;
+    private javax.swing.JMenuItem tagihan;
     // End of variables declaration//GEN-END:variables
 }

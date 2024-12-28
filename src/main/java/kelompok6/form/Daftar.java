@@ -42,6 +42,14 @@ public class Daftar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Failed to register user.");
         }
     }
+    
+    public void clean(){
+        formnama.setText("");
+        formusername.setText("");
+        formpassword.setText("");
+        formemail.setText("");
+        formalamat.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,7 +176,7 @@ public class Daftar extends javax.swing.JFrame {
     private void daftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMouseClicked
         // TODO add your handling code here:
         daftar();
-               
+        clean();
     }//GEN-LAST:event_daftarMouseClicked
 
     /**
