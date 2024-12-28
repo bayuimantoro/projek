@@ -61,6 +61,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         editUser = new javax.swing.JMenuItem();
         hapusUser = new javax.swing.JMenuItem();
         tagihan = new javax.swing.JMenuItem();
+        hapusPaket = new javax.swing.JMenuItem();
         Logout = new javax.swing.JMenu();
 
         jTextField1.setText("jTextField1");
@@ -125,13 +126,21 @@ public class MenuAdmin extends javax.swing.JFrame {
         });
         administrasi.add(hapusUser);
 
-        tagihan.setText("Tagihan");
+        tagihan.setText("Paket User");
         tagihan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tagihanActionPerformed(evt);
             }
         });
         administrasi.add(tagihan);
+
+        hapusPaket.setText("Hapus Paket");
+        hapusPaket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusPaketActionPerformed(evt);
+            }
+        });
+        administrasi.add(hapusPaket);
 
         jMenuBar1.add(administrasi);
 
@@ -212,12 +221,21 @@ public class MenuAdmin extends javax.swing.JFrame {
 
     private void tagihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tagihanActionPerformed
         // TODO add your handling code here:
-        Paket tagihan = new Paket();
+        Paket paket = new Paket();
         Content.removeAll();
-        Content.add(tagihan.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.add(paket.getContentPane(), java.awt.BorderLayout.CENTER);
         Content.revalidate();
         Content.repaint();
     }//GEN-LAST:event_tagihanActionPerformed
+
+    private void hapusPaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusPaketActionPerformed
+        // TODO add your handling code here:
+        HapusPaket hapusPaket = new HapusPaket();
+        Content.removeAll();
+        Content.add(hapusPaket.getContentPane(), java.awt.BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_hapusPaketActionPerformed
 
     private void editUserMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editUserMouseClicked
         // TODO add your handling code here:
@@ -277,6 +295,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu Logout;
     private javax.swing.JMenu administrasi;
     private javax.swing.JMenuItem editUser;
+    private javax.swing.JMenuItem hapusPaket;
     private javax.swing.JMenuItem hapusUser;
     private javax.swing.JMenu home;
     private javax.swing.JMenuBar jMenuBar1;

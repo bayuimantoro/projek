@@ -57,10 +57,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="tagihan">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tagihan"/>
+                <Property name="text" type="java.lang.String" value="Paket User"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tagihanActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="hapusPaket">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hapus Paket"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hapusPaketActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
